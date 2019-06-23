@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RainRipplesMat
-  m_Shader: {fileID: -6465566751694194690, guid: c76b8aea67b14d14e953121235a164f3,
+  m_Name: CrazyRainRipple
+  m_Shader: {fileID: -6465566751694194690, guid: 34738661ea452f0478d2308da491b21a,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,10 +20,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_D1EE1178:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Albedo:
         m_Texture: {fileID: 2800000, guid: 87ce03bd447ccce48bbff87ac0d8355f, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -38,14 +34,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _FPS: 16
-    - _MaskVariable: 1
-    - _RippleColorStrength: 0
-    - _RippleStrength: 0
-    - _RippleTile: 20
+    - _MaskVariable: 8
+    - _RippleTile: 10
     - _Smoothness: 1
-    - _Speed: 16
-    - _Tiling: 10
+    - _Tiling: 1
     m_Colors:
-    - _RippleColor: {r: 0.9411765, g: 1.3333334, b: 1.3019608, a: 0}
-    - _RippleColorTwo: {r: 3.9999995, g: 1.5706805, b: 1.5706805, a: 0}
-    - _Tint: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 0}
+    - _Tint: {r: 1, g: 0, b: 0, a: 0}

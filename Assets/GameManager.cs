@@ -60,12 +60,14 @@ public class GameManager : MonoBehaviour
         if (seen) {
             if (timePlayerSeen < floorMaxStrength)
                 timePlayerSeen += Time.deltaTime * 0.1f;
-            floorMaterial.SetFloat("_RippleStrength", 1 - (floorMaxStrength - timePlayerSeen));
         }
         else {
             if(timePlayerSeen > 0f)
                 timePlayerSeen -= Time.deltaTime * 1.0f;
-            floorMaterial.SetFloat("_RippleStrength", 1 - (floorMaxStrength - timePlayerSeen));
+            
         }
+
+        floorMaterial.SetFloat("_RippleStrength", 1 - (floorMaxStrength - timePlayerSeen));
+        floorMaterial.SetFloat("_RippleColorStrength", 1 - (floorMaxStrength - timePlayerSeen));
     }
 }

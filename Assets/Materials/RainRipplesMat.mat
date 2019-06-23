@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RainRipplesMat
+  m_Shader: {fileID: -6465566751694194690, guid: c76b8aea67b14d14e953121235a164f3,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_D1EE1178:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: 87ce03bd447ccce48bbff87ac0d8355f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normals:
+        m_Texture: {fileID: 2800000, guid: fab85e0cacda9644a99e5182a86b71f5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RippleSheet:
+        m_Texture: {fileID: 2800000, guid: b38a8d6708ca90449b4fa57f2e3183cc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _FPS: 16
+    - _MaskVariable: 1
+    - _RippleColorStrength: 0
+    - _RippleStrength: 0
+    - _RippleTile: 20
+    - _Smoothness: 1
+    - _Speed: 16
+    - _Tiling: 10
+    m_Colors:
+    - _RippleColor: {r: 0.23560211, g: 0.33333334, b: 0.32635254, a: 0}
+    - _RippleColorTwo: {r: 0.9999999, g: 0.39267012, b: 0.39267012, a: 0}
+    - _Tint: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 0}
