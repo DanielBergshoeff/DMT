@@ -2,72 +2,87 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
 
     public GameObject Player;
     public GameObject PlayerCam;
 
-    public GameObject Floor;
-    private Material floorMaterial;
-    private float floorMaxStrength = 1.0f;
-    private bool floorBeingSeen = false;
-
-    public Dictionary<string, System.Action> TagToMethod = new Dictionary<string, System.Action>();
+    public List<EffectVariables> effects;
 
     private int invisMask = ~(1 << 9);
 
-    private float timePlayerSeen = 0f;
-
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         Instance = this;
-        TagToMethod.Add("Player", PlayerSeen);
-        floorMaterial = Floor.GetComponent<Renderer>().material;
+
+        for (int i = 0; i < effects.Count; i++) {
+            effects[i].material = effects[i].materialObject.GetComponent<Renderer>().material;
+            effects[i].currentlySeen = false;
+        }
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        floorBeingSeen = false;
+    void Update() {
+        for (int i = 0; i < effects.Count; i++) {
+            effects[i].currentlySeen = false;
+        }
+
         SendRayCast(PlayerCam.transform.position, PlayerCam.transform.forward);
-        PlayerSeenBehaviour(floorBeingSeen);
     }
 
     public void SendRayCast(Vector3 pos, Vector3 dir) {
         RaycastHit hit;
         Debug.DrawRay(pos, dir * 1000f);
-        if(Physics.Raycast(pos, dir, out hit, 1000.0f, invisMask)){
+        if (Physics.Raycast(pos, dir, out hit, 1000.0f, invisMask)) {
             if (hit.transform.CompareTag("Mirror")) {
                 Vector3 reflection = Vector3.Reflect(PlayerCam.transform.forward.normalized, hit.normal);
                 SendRayCast(hit.point, reflection);
             }
             else {
-                if (TagToMethod.ContainsKey(hit.transform.tag)) {
-                    TagToMethod[hit.transform.tag].Invoke();
+                for (int i = 0; i < effects.Count; i++) {
+                    if (effects[i].tag == hit.transform.tag && effects[i].timer < effects[i].waitTime + effects[i].timeEffectChange) {
+                        effects[i].timer += Time.deltaTime;
+                        if (effects[i].timer > effects[i].waitTime + effects[i].timeEffectChange)
+                            effects[i].timer = effects[i].waitTime + effects[i].timeEffectChange;
+                    }
+                    else if(effects[i].tag != hit.transform.tag && effects[i].timer > 0f) {
+                        effects[i].timer -= Time.deltaTime * effects[i].disappearRate;
+                        if (effects[i].timer < 0f)
+                            effects[i].timer = 0f;
+                    }
+                    effects[i].material.SetFloat(effects[i].effectReference, ((effects[i].timer > effects[i].waitTime ? (effects[i].timer - effects[i].waitTime) : 0f) / effects[i].timeEffectChange) * effects[i].increase);
                 }
             }
         }
     }
 
-    public void PlayerSeen() {
-        floorBeingSeen = true;
-    }
-
-    public void PlayerSeenBehaviour(bool seen) {
-        if (seen) {
-            if (timePlayerSeen < floorMaxStrength)
-                timePlayerSeen += Time.deltaTime * 0.1f;
+    /*public void ObjectSeenBehaviour(bool seen) {
+        if (seen && timePlayerSeen < MaxTime) {
+            timePlayerSeen += Time.deltaTime * 1f;
         }
-        else {
-            if(timePlayerSeen > 0f)
-                timePlayerSeen -= Time.deltaTime * 1.0f;
-            
+        else if(!seen && timePlayerSeen > MinTime) {
+            timePlayerSeen -= Time.deltaTime * 1f;
         }
 
-        floorMaterial.SetFloat("_RippleStrength", 1 - (floorMaxStrength - timePlayerSeen));
-        floorMaterial.SetFloat("_RippleColorStrength", 1 - (floorMaxStrength - timePlayerSeen));
-    }
+        for (int i = 0; i < effects.Count; i++) {
+            if (timePlayerSeen > effects[i].timeStart && timePlayerSeen < effects[i].timeEnd) {
+                effects[i].material.SetFloat(effects[i].effectReference, (timePlayerSeen - effects[i].timeStart) / (effects[i].increase * (effects[i].timeEnd - effects[i].timeStart)));
+            }
+        }
+    }*/
+}
+
+[System.Serializable]
+public class EffectVariables {
+    public GameObject materialObject;
+    [System.NonSerialized] public Material material;
+    [System.NonSerialized] public bool currentlySeen;
+    [System.NonSerialized] public float timer;
+    public string effectReference;
+    public float waitTime;
+    public float timeEffectChange;
+    public float increase;
+    public float disappearRate;
+    public string tag;
 }

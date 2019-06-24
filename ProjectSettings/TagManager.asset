@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Mirror
+  - DancingSpheres
+  - DissolveCube
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - 
   - PostProcessing
   - InvisibleWalls
-  - 
-  - 
+  - HiddenVisuals
+  - Visuals
   - 
   - 
   - 
