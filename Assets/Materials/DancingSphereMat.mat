@@ -32,6 +32,7 @@ Material:
     - _MaskY: 0.2
     - _MoveSpeed: 0.2
     - _Offset: 1
+    - _Opacity: 1
     m_Colors:
-    - _Emission: {r: 1, g: 0.2688679, b: 0.9461599, a: 0}
+    - _Emission: {r: 1, g: 0, b: 0.92473125, a: 0}
     - _Mask: {r: 0, g: 0, b: 0, a: 0}

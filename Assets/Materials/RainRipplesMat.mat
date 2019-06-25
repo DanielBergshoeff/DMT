@@ -41,11 +41,12 @@ Material:
     - _MaskVariable: 1
     - _RippleColorStrength: 0
     - _RippleStrength: 0
-    - _RippleTile: 20
-    - _Smoothness: 1
+    - _RippleTile: 32
+    - _Size: 1
+    - _Smoothness: 0
     - _Speed: 16
     - _Tiling: 10
     m_Colors:
-    - _RippleColor: {r: 0.23560211, g: 0.33333334, b: 0.32635254, a: 0}
-    - _RippleColorTwo: {r: 0.9999999, g: 0.39267012, b: 0.39267012, a: 0}
-    - _Tint: {r: 0.11320752, g: 0.0037379863, b: 0.0037379863, a: 0}
+    - _RippleColor: {r: 1, g: 0, b: 1, a: 0}
+    - _RippleColorTwo: {r: 0, g: 1, b: 0.6055045, a: 0}
+    - _Tint: {r: 1, g: 1, b: 1, a: 0}

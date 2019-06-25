@@ -17,8 +17,11 @@ public class GameManager : MonoBehaviour {
         Instance = this;
 
         for (int i = 0; i < effects.Count; i++) {
-            effects[i].material = effects[i].materialObject.GetComponent<Renderer>().material;
-            effects[i].currentlySeen = false;
+            effects[i].materials = new Material[effects[i].materialObjects.Length];
+            for (int j = 0; j < effects[i].materialObjects.Length; j++) {
+                effects[i].materials[j] = effects[i].materialObjects[j].GetComponent<Renderer>().material;
+                effects[i].currentlySeen = false;
+            }
         }
     }
 
@@ -51,7 +54,10 @@ public class GameManager : MonoBehaviour {
                         if (effects[i].timer < 0f)
                             effects[i].timer = 0f;
                     }
-                    effects[i].material.SetFloat(effects[i].effectReference, ((effects[i].timer > effects[i].waitTime ? (effects[i].timer - effects[i].waitTime) : 0f) / effects[i].timeEffectChange) * effects[i].increase);
+
+                    foreach(Material mat in effects[i].materials) {
+                        mat.SetFloat(effects[i].effectReference, ((effects[i].timer > effects[i].waitTime ? (effects[i].timer - effects[i].waitTime) : 0f) / effects[i].timeEffectChange) * effects[i].increase);
+                    }
                 }
             }
         }
@@ -75,8 +81,8 @@ public class GameManager : MonoBehaviour {
 
 [System.Serializable]
 public class EffectVariables {
-    public GameObject materialObject;
-    [System.NonSerialized] public Material material;
+    public GameObject[] materialObjects;
+    [System.NonSerialized] public Material[] materials;
     [System.NonSerialized] public bool currentlySeen;
     [System.NonSerialized] public float timer;
     public string effectReference;
