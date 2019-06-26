@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//[ExecuteInEditMode]
 public class MirrorProbe : MonoBehaviour {
     public enum Directions { X, Y, Z };
 
