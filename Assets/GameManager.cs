@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour {
                 SendRayCast(hit.point, reflection);
             }
             else {
+                Debug.Log(hit.transform.tag);
                 for (int i = 0; i < effects.Count; i++) {
                     if (effects[i].tag == hit.transform.tag && effects[i].timer < effects[i].waitTime + effects[i].timeEffectChange) {
                         effects[i].timer += Time.deltaTime;

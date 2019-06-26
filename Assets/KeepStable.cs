@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class KeepStable : MonoBehaviour
 {
+    public float offset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,10 @@ public class KeepStable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition = new Vector3(transform.localPosition.x, 0f, transform.localPosition.z);
+        transform.position = new Vector3(transform.position.x, -InputTracking.GetLocalPosition(XRNode.CenterEye).y + offset, transform.position.z);
+
+        //transform.position = -InputTracking.GetLocalPosition(XRNode.CenterEye);
+
+        //transform.rotation = Quaternion.Inverse(InputTracking.GetLocalRotation(XRNode.CenterEye));
     }
 }
