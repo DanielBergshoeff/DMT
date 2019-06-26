@@ -23,7 +23,7 @@ Material:
     m_Floats:
     - Vector1_BD79A7B5: 100
     - _AlphaClipThreshold: 0.6
-    - _Dissolve: 0.01
+    - _Dissolve: 0.17
     - _EdgeThickness: -0.35
     - _NoiseScale: 500
     m_Colors:
