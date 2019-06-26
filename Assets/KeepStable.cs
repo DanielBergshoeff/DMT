@@ -16,9 +16,9 @@ public class KeepStable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, -InputTracking.GetLocalPosition(XRNode.CenterEye).y + offset, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, -InputTracking.GetLocalPosition(XRNode.CenterEye).y + offset, -InputTracking.GetLocalPosition(XRNode.CenterEye).z);
 
-        //transform.position = -InputTracking.GetLocalPosition(XRNode.CenterEye);
+        transform.localPosition = -InputTracking.GetLocalPosition(XRNode.CenterEye) + new Vector3(0f, offset, 0f);
 
         //transform.rotation = Quaternion.Inverse(InputTracking.GetLocalRotation(XRNode.CenterEye));
     }
