@@ -33,7 +33,7 @@ Material:
     - _AmountOfInsects: 0
     - _InsectSpeed: 0
     - _Metallic: 1
-    - _Overlay: 1
+    - _Overlay: 0
     m_Colors:
     - _Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 0}
     - _ColorOverlay: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}

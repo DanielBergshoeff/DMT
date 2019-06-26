@@ -62,21 +62,6 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
-
-    /*public void ObjectSeenBehaviour(bool seen) {
-        if (seen && timePlayerSeen < MaxTime) {
-            timePlayerSeen += Time.deltaTime * 1f;
-        }
-        else if(!seen && timePlayerSeen > MinTime) {
-            timePlayerSeen -= Time.deltaTime * 1f;
-        }
-
-        for (int i = 0; i < effects.Count; i++) {
-            if (timePlayerSeen > effects[i].timeStart && timePlayerSeen < effects[i].timeEnd) {
-                effects[i].material.SetFloat(effects[i].effectReference, (timePlayerSeen - effects[i].timeStart) / (effects[i].increase * (effects[i].timeEnd - effects[i].timeStart)));
-            }
-        }
-    }*/
 }
 
 [System.Serializable]

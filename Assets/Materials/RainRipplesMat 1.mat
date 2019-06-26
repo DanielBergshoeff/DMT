@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RainRipplesMat
+  m_Name: RainRipplesMat 1
   m_Shader: {fileID: -6465566751694194690, guid: c76b8aea67b14d14e953121235a164f3,
     type: 3}
   m_ShaderKeywords: 
@@ -49,5 +49,5 @@ Material:
     m_Colors:
     - _RippleColor: {r: 1, g: 0, b: 1, a: 0}
     - _RippleColorTwo: {r: 0, g: 1, b: 0.6055045, a: 0}
-    - _Tiling: {r: 20, g: 20, b: 0, a: 0}
+    - _Tiling: {r: 20, g: 80, b: 0, a: 0}
     - _Tint: {r: 1, g: 1, b: 1, a: 0}
